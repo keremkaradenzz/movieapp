@@ -1,10 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import Movie from './components/Movie';
 import Pagination from './components/Pagination';
+import data from './data.js';
+const API = data;
 
-const API = "http://api.tvmaze.com/shows?page=1";
+console.log("inside handleGetJson");
+fetch(`${API}`, {
+    headers : { 
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+     }
 
-
+  })
+  .then((response) => response.json())
+  .then((messages) => {console.log("messages");});
 
   
 function App() {
