@@ -5,15 +5,7 @@ import data from './data.js';
 const API = data;
 
 console.log("inside handleGetJson");
-fetch(`${API}`, {
-    headers : { 
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-     }
 
-  })
-  .then((response) => response.json())
-  .then((messages) => {console.log("messages");});
 
   
 function App() {
@@ -22,15 +14,15 @@ function App() {
   const [currentPage , setCurrentPage] = useState(1);
   const [moviesPerPage , setMoviesPerPage] = useState(12);
   useEffect(async () => {
-    fetch(API).then(res => res.json())
-      .then((data) => {
-        setMovies(data);
-        console.log(data[100]);
-       
-      })
-
-
-
+    fetch(`${API}`, {
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       }
+  
+    })
+    .then((response) => response.json())
+    .then(setMovies(data)); 
   }, [])
   const indexofLastMovies = currentPage * moviesPerPage;
   const indexOfFirstMovies = indexofLastMovies - moviesPerPage;
