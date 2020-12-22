@@ -27,7 +27,7 @@ function App() {
   const indexofLastMovies = currentPage * moviesPerPage;
   const indexOfFirstMovies = indexofLastMovies - moviesPerPage;
   const currentPages = movies.slice(indexOfFirstMovies,indexofLastMovies);
-
+  
   // Change Page 
   const paginate = (pageNumber) => setCurrentPage(pageNumber)
   
@@ -42,7 +42,7 @@ function App() {
       <div className="row">
         {
          filterSearch.map((item, index) => (
-            <Movie key={index} posts={currentPage} {...item} id={index} />
+            <Movie key={item.id} posts={currentPage} {...item} id={item.id} />
           ))
         }
         <Pagination moviesPerPage={moviesPerPage} paginate={paginate} totalPosts={movies.length}></Pagination>
