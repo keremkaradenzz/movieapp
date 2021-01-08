@@ -17,3 +17,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.movie-image{
+  max-width: 500px;
+  max-height: 500px;
+}
+
+.heart{
+  cursor: pointer;
+}
