@@ -23,7 +23,7 @@ const MovieDetails = ({ movies }) => {
   function handleClick() {
     history.goBack();
   }
-  console.log(history);
+
   return (
     <>
       <div className="container">
@@ -35,6 +35,12 @@ const MovieDetails = ({ movies }) => {
                   <ol className="breadcrumb">
                     <li className="breadcrumb-item">
                       <Link to="/">Home</Link>
+                    </li>
+                    <li
+                      className="breadcrumb-item active text-white"
+                      aria-current="page"
+                    >
+                        <Link to={`/category/${item.genres[0]}`}>{item.genres[0]}</Link>
                     </li>
                     <li
                       className="breadcrumb-item active text-white"
@@ -83,22 +89,31 @@ const MovieDetails = ({ movies }) => {
                 </button>
               ))}
           </div>
-          <div className="row mt-5">
+          <div class="overflow-auto mt-5">
+          <div style={{maxHeight:550}} className="row mt-5">
+  
             <h2 className="text-white text-center">Recommended Movies</h2>
+        
             {recommedMovies.map((item, index) => (
-              <Movie
+
+                 <Movie
                 key={item.id}
                 posts={recommedMovies}
                 {...item}
                 id={item.id}
-              />
+              />   
             ))}
+
+       
+            </div>
           </div>
           <hr></hr>
           <div className="row">
+         
             <div className="col-12">
+            <hr className="text-white"></hr>
               <h3 className="text-white text-center">History Movies</h3>
-              <HistoryMovies></HistoryMovies>
+              <HistoryMovies movies={movies} movieHistory={history}></HistoryMovies>
             </div>
           </div>
         </div>
